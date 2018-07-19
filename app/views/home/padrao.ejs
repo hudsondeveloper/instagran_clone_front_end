@@ -30,7 +30,7 @@
 					xhr.send();
 				}
 
-				carrega_api();
+				//carrega_api();
 
 				function carrega_postagens(){
 					// criar xmlhttprequest
@@ -39,8 +39,9 @@
 
 					xhr.onload = function(){
 						if(xhr.status === 200){
+						
 							var data = $.parseJSON(xhr.responseText);
-							
+						
 							for(i = 0; i < data.length; i++){
 
 								$('#container_timeline').append(
@@ -48,7 +49,7 @@
 										'<span class="titulo">' + 
 											data[i].titulo + 
 										'</span>' +
-										'<img class="tamanhoPostagem" src="http://interfy.herokuapp.com/server/public/'+data[i].url_imagem+'" />'+
+										'<img class="tamanhoPostagem" src="http://interfy.herokuapp.com/imagens/'+data[i].url_imagem+'" />'+
 										'<div class="comentarios" id="comentarios_'+data[i]._id+'"></div>'+
 										'<div class="comentar">'+
 											'<input type="text" class="form-control input_comentario" id="postagem_'+data[i]._id+'" placeholder="Adicione um comentário...">' +
@@ -155,32 +156,32 @@
 				});
 				
 
-				$('#btn-publicar').click(function(){
+				// $('#btn-publicar').click(function(){
 
-				// criar um formData
-				var formData = new FormData();
+				// // criar um formData
+				// var formData = new FormData();
 
-				var arquivo = document.getElementById("arquivo").files[0];
-				var titulo = document.getElementById("titulo").value;
+				// var arquivo = document.getElementById("arquivo").files[0];
+				// var titulo = document.getElementById("titulo").value;
 
-				formData.append("arquivo", arquivo);
-				formData.append("titulo", titulo);
+				// formData.append("arquivo", arquivo);
+				// formData.append("titulo", titulo);
 
-				// criar xmlhttprequest
-				var xhr = new XMLHttpRequest();
+				// // criar xmlhttprequest
+				// var xhr = new XMLHttpRequest();
 
-				// verificar as mudanças de estado
-				xhr.onreadystatechange = function(){
-					if(xhr.readyState == 4){
-						var resposta = xhr.responseText;
-						document.getElementById('mensagem').innerHTML = resposta;
-					}
-				}
+				// // verificar as mudanças de estado
+				// xhr.onreadystatechange = function(){
+				// 	if(xhr.readyState == 4){
+				// 		var resposta = xhr.responseText;
+				// 		document.getElementById('mensagem').innerHTML = resposta;
+				// 	}
+				// }
 
-				//fazer o envio do nosso request
-				xhr.open("POST", "https://interfy.herokuapp.com/upload/imagem");
-				xhr.send(formData);
-				});
+				// //fazer o envio do nosso request
+				// xhr.open("POST", "https://interfy.herokuapp.com/upload/imagem");
+				// xhr.send(formData);
+				// });
 			});
 		</script>
 
