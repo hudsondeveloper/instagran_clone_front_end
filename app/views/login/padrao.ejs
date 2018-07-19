@@ -127,7 +127,7 @@
 					var email = document.getElementById("email").value;
 					var password = document.getElementById("password").value;
 
-					formData.append("email", login);
+					formData.append("email", email);
 					formData.append("password", password);
 
 					// criar xmlhttprequest
@@ -142,7 +142,7 @@
 					}
 
 					//fazer o envio do nosso request
-					xhr.open("POST", "https://interfy.herokuapp.com/users/login'");
+					xhr.open("POST", "https://interfy.herokuapp.com/users/login");
 					xhr.send(formData);
 				});
 				
