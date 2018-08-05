@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>Instagram Clone - WEB</title>
+		
+		<!-- JQuery -->
+		<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+		<!-- bootstrap - link cdn -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	
+		<!-- incluindo css -->
+		<link href="css/style.css" rel="stylesheet">
+
+		<script>
+
+
+				$('#btn-login').click(function(){
+
+					// criar um formData
+					var formData = new FormData();
+
+                    var icone = document.getElementById("icone").files[0];
+                    var arquivo = document.getElementById("arquivo").files[0];
+					var pais = document.getElementById("pais").value;
+					var nome = document.getElementById("nome").value;
+                    var infraestrutura = document.getElementById("infraestrutura").value;
+                    var diferenciais = document.getElementById("diferenciais").value;
+                    var cidade = document.getElementById("cidade").value;
+                    var atividadesExtra = document.getElementById("atividadesExtra").value;
+
+					formData.append("nome", email);
+                    formData.append("pais", password);
+                    formData.append("cidade", password);
+                    formData.append("diferenciais", password);
+                    formData.append("infraestrutura", password);
+                    formData.append("atividadesExtra", password);
+                    formData.append("icone", password);
+                    formData.append("arquivo", password);
+                
+
+					// criar xmlhttprequest
+					var xhr = new XMLHttpRequest();
+
+					// verificar as mudanças de estado
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							var resposta = xhr.responseText;
+							document.getElementById('mensagem').innerHTML = resposta;
+						}
+					}
+
+					//fazer o envio do nosso request
+					xhr.open("POST", "https://interfy.herokuapp.com/escolas/register");
+					xhr.send(formData);
+				});
+				
+		</script>
+
+	</head>
+
+	<body>
+
+
+
+
+		<div class="container"  id="container_form">
+			<div class="panel panel-default">
+
+			<div class="panel-heading"><h4>Cadastrar Escola</h4></div>
+			
+			<div class="panel-body">
+				<div class="form-group">
+					<input type="text" name="nome" id="nome" class="form-control">
+                </div>
+
+                <div class="form-group">
+                        <select id="pais">
+                        <option value="">Selecione</option>
+                        <option value="Afeganistão">Afeganistão</option>
+                        <option value="África do Sul">África do Sul</option>
+                        <option value="Albânia">Albânia</option>
+                        <option value="Alemanha">Alemanha</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Austrália">Austrália</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Canadá">Canadá</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Colômbia">Colômbia</option>
+                        <option value="Espanha">Espanha</option>
+                        <option value="Estados Unidos">Estados Unidos</option>
+                        <option value="França">França</option>
+                        <option value="Irlanda">Irlanda</option>
+                        <option value="Japão">Japão</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Suíça">Suíça</option>
+                        <option value="Uruguai">Uruguai</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Polónia">Polónia</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                        <input type="text" name="cidade" id="cidade" class="form-control">
+                </div>
+
+                <div class="form-group">
+                        <input type="file" name="arquivo" id="arquivo" class="form-control">
+                </div>
+
+                <div class="form-group">
+                        <textarea  rows="4" cols="50" type="text" name="diferenciais" id="diferenciais" class="form-control">
+                </div>
+
+                <div class="form-group">
+                        <input type="file" name="icone" id="icone" class="form-control">
+                </div>
+        
+                <div class="form-group">
+                        <textarea  rows="4" cols="50" type="text" name="infraestrutura" id="infraestrutura" class="form-control">
+                </div>
+
+                <div class="form-group">
+                        <textarea  rows="4" cols="50" type="text" name="atividadesExtra" id="atividadesExtra" class="form-control">
+                </div>
+
+				<div class="form-group">
+					<button class="btn btn-success" id="btn-login">Cadastrar</button>
+				</div>
+				<div id="mensagem"></div>
+			</div>
+		</div>
+	</body>
+</html>

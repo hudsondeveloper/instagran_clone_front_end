@@ -15,4 +15,8 @@ module.exports = function(application){
 		application.app.controllers.login.login(application, req, res);
 	});
 
+	application.get('/escola', function(req, res){
+		application.app.controllers.escola.escola(application, req, res);
+	});
+
 }
