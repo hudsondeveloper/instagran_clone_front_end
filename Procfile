@@ -1,1 +1,1 @@
-web: npm start
+web: node app/views/index/padrao.ejs
