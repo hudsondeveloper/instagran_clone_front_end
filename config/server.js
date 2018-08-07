@@ -36,6 +36,11 @@ consign()
 
 /* middleware que configura páginas de status */
 app.use(function(req, res, next){
+	console.log(req.body + "1")
+	console.log(req.baseUrl+ "2")
+	console.log(req.app+ "3")
+	console.log(req.originalUrl+ "4")
+	console.log(req+ "5")
 	res.status(404).render('errors/404');
 	next();
 });
