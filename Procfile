@@ -1,1 +1,1 @@
-web: node app/views/index/padrao.ejs
+web: node app.js
