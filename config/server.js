@@ -1,6 +1,17 @@
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.setHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE");
+	res.setHeader("Access-Control-Allow-Credentials",true);
+	res.header("Access-Control-Allow-Origin", "*");
+  
+	next();
+  });
 /* importar o módulo do framework express */
 var express = require('express');
-
+var app = express();
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(multiparty());
 /* importar o módulo do consign */
 var consign = require('consign');
 
@@ -46,14 +57,9 @@ app.use(function(err, req, res, next){
 	next();
 });
 
-app.use(function(err, req, res, next){
-	res.status(500).render('errors/500');
-	next();
-});
-
 app.get('/escola', (req, res) => {
 	res.render('escola/padrao');
-  })
+  });
 
 /* exportar o objeto app */
 module.exports = app;
