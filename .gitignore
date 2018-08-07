@@ -1,0 +1,6 @@
+node_modules/
+server.log
+package-lock.json
+playground/
+npm-debug.log
+.vscode
