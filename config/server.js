@@ -25,7 +25,7 @@ app.use(express.static('./app/public'));
 /* configurar o middleware body-parser */
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(multiparty());
+
 
 /* configurar o middleware express-validator */
 app.use(expressValidator());
@@ -45,7 +45,7 @@ consign()
 	  
 		next();
 	  });
-	  
+
 /* middleware que configura páginas de status */
 app.use(function(req, res, next){
 	res.status(404).render('errors/404');
@@ -59,7 +59,7 @@ app.use(function(err, req, res, next){
 });
 
 app.get('/escola', (req, res) => {
-	res.render('escola/padrao');
+	res.status(200).render('escola/padrao');
   });
 
 /* exportar o objeto app */
