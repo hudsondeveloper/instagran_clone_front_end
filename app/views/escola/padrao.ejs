@@ -16,13 +16,12 @@
 
 		<script>
 
-
-				$('#btn-login').click(function(){
+            $(document).ready(function(){
+				$('#btn-cadastrar').click(function(){
 
 					// criar um formData
 					var formData = new FormData();
 
-                    var icone = document.getElementById("icone").files[0];
                     var arquivo = document.getElementById("arquivo").files[0];
 					var pais = document.getElementById("pais").value;
 					var nome = document.getElementById("nome").value;
@@ -31,14 +30,13 @@
                     var cidade = document.getElementById("cidade").value;
                     var atividadesExtra = document.getElementById("atividadesExtra").value;
 
-					formData.append("nome", email);
-                    formData.append("pais", password);
-                    formData.append("cidade", password);
-                    formData.append("diferenciais", password);
-                    formData.append("infraestrutura", password);
-                    formData.append("atividadesExtra", password);
-                    formData.append("icone", password);
-                    formData.append("arquivo", password);
+					formData.append("nome", nome);
+                    formData.append("pais", pais);
+                    formData.append("cidade", cidade);
+                    formData.append("diferenciais", diferenciais);
+                    formData.append("infraestrutura", infraestrutura);
+                    formData.append("atividadesExtra", atividadesExtra);
+                    formData.append("arquivo", arquivo);
                 
 
 					// criar xmlhttprequest
@@ -56,27 +54,28 @@
 					xhr.open("POST", "https://interfy.herokuapp.com/escolas/register");
 					xhr.send(formData);
 				});
-				
+                
+            });
 		</script>
 
 	</head>
 
 	<body>
 
-
-
-
 		<div class="container"  id="container_form">
+
 			<div class="panel panel-default">
 
 			<div class="panel-heading"><h4>Cadastrar Escola</h4></div>
 			
 			<div class="panel-body">
 				<div class="form-group">
+                        <label>Nome</label>
 					<input type="text" name="nome" id="nome" class="form-control">
                 </div>
 
                 <div class="form-group">
+                        <label>Pais</label>
                         <select id="pais">
                         <option value="">Selecione</option>
                         <option value="Afeganistão">Afeganistão</option>
@@ -85,7 +84,7 @@
                         <option value="Alemanha">Alemanha</option>
                         <option value="Argentina">Argentina</option>
                         <option value="Austrália">Austrália</option>
-                        <option value="Brasil">Brasil</option>
+                        <option value="BR">Brasil</option>
                         <option value="Canadá">Canadá</option>
                         <option value="Chile">Chile</option>
                         <option value="Colômbia">Colômbia</option>
@@ -103,31 +102,32 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Cidade</label>
                         <input type="text" name="cidade" id="cidade" class="form-control">
                 </div>
 
                 <div class="form-group">
+                        <label>Fotos</label>
                         <input type="file" name="arquivo" id="arquivo" class="form-control">
                 </div>
 
                 <div class="form-group">
-                        <textarea  rows="4" cols="50" type="text" name="diferenciais" id="diferenciais" class="form-control">
-                </div>
-
-                <div class="form-group">
-                        <input type="file" name="icone" id="icone" class="form-control">
+                        <label>Diferenciais</label>
+                        <textarea  rows="4" cols="50" type="text" name="diferenciais" id="diferenciais" class="form-control"></textarea>
                 </div>
         
                 <div class="form-group">
-                        <textarea  rows="4" cols="50" type="text" name="infraestrutura" id="infraestrutura" class="form-control">
+                        <label>Infraestrutura</label>
+                        <textarea  rows="4" cols="50" type="text" name="infraestrutura" id="infraestrutura" class="form-control"></textarea>
                 </div>
 
                 <div class="form-group">
-                        <textarea  rows="4" cols="50" type="text" name="atividadesExtra" id="atividadesExtra" class="form-control">
+                        <label>Atividades Extra</label>
+                        <textarea  rows="4" cols="50" type="text" name="atividadesExtra" id="atividadesExtra" class="form-control"></textarea>
                 </div>
 
 				<div class="form-group">
-					<button class="btn btn-success" id="btn-login">Cadastrar</button>
+					<button class="btn btn-success" id="btn-cadastrar">Cadastrar</button>
 				</div>
 				<div id="mensagem"></div>
 			</div>
