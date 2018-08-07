@@ -1,17 +1,7 @@
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	res.setHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE");
-	res.setHeader("Access-Control-Allow-Credentials",true);
-	res.header("Access-Control-Allow-Origin", "*");
-  
-	next();
-  });
+
 /* importar o módulo do framework express */
 var express = require('express');
-var app = express();
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
-app.use(multiparty());
+
 /* importar o módulo do consign */
 var consign = require('consign');
 
@@ -29,11 +19,13 @@ app.set('view engine', 'ejs');
 app.set('views', './app/views');
 
 /* configurar o middleware express.static */
+
 app.use(express.static('./app/public'));
 
 /* configurar o middleware body-parser */
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use(multiparty());
 
 /* configurar o middleware express-validator */
 app.use(expressValidator());
@@ -45,6 +37,15 @@ consign()
 	.then('app/controllers')
 	.into(app);
 
+	app.use(function(req, res, next) {
+		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+		res.setHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE");
+		res.setHeader("Access-Control-Allow-Credentials",true);
+		res.header("Access-Control-Allow-Origin", "*");
+	  
+		next();
+	  });
+	  
 /* middleware que configura páginas de status */
 app.use(function(req, res, next){
 	res.status(404).render('errors/404');
